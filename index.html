@@ -5,19 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>דיווח רפואי</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>📋 דיווח רפואי</h1>
-        <div id="root">
-            <noscript>
-                <h2 style="color: red; text-align: center;">❌ שגיאה!<br>נא למלא את התלונה ידנית.</h2>
-            </noscript>
-        </div>
+        <div id="root"></div>
+        <noscript>
+            <h2 style="color: red; text-align: center;">❌ שגיאה!<br>נא למלא את התלונה ידנית.</h2>
+        </noscript>
     </div>
-    <script type="text/babel" src="MedicalReportForm.js"></script>
+    <script type="text/babel">
+        async function loadComponent() {
+            try {
+                const response = await fetch("MedicalReportForm.js");
+                if (!response.ok) throw new Error("Failed to load script");
+                const script = document.createElement("script");
+                script.type = "text/babel";
+                script.text = await response.text();
+                document.body.appendChild(script);
+            } catch (error) {
+                document.getElementById("root").innerHTML = '<h2 style="color: red; text-align: center;">❌ שגיאה!<br>נא למלא את התלונה ידנית.</h2>';
+            }
+        }
+        loadComponent();
+    </script>
 </body>
 </html>
