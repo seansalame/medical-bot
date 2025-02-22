@@ -19,7 +19,7 @@ const MedicalReportForm = () => {
     };
 
     return (
-        <div className="container">
+        <div className="container" style={{ direction: "rtl", textAlign: "right" }}>
             <h2>📋 טופס דיווח רפואי</h2>
             <label>🏢 מכלאה:</label>
             <input type="text" name="blockNumber" onChange={handleChange} />
@@ -29,6 +29,7 @@ const MedicalReportForm = () => {
 
             <label>🧠 האם בהכרה?</label>
             <select name="consciousness" onChange={handleChange}>
+                <option value="">בחר</option>
                 <option value="כן">כן</option>
                 <option value="לא">לא</option>
                 <option value="קשה להבין">קשה להבין</option>
@@ -36,6 +37,7 @@ const MedicalReportForm = () => {
 
             <label>🗣️ האם ניסית לדבר עם האסיר?</label>
             <select name="spokenToPrisoner" onChange={handleChange}>
+                <option value="">בחר</option>
                 <option value="כן">כן</option>
                 <option value="לא">לא</option>
             </select>
@@ -45,6 +47,7 @@ const MedicalReportForm = () => {
 
             <label>💥 ממה נגרם?</label>
             <select name="cause" onChange={handleChange}>
+                <option value="">בחר</option>
                 <option value="חבלה">חבלה</option>
                 <option value="חיפושים">חיפושים</option>
                 <option value="זריקת רימון">זריקת רימון</option>
