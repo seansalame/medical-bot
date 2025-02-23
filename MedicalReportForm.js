@@ -35,16 +35,16 @@ const MedicalReportForm = () => {
     };
 
     return (
-        <div className="container" style={{ direction: "rtl", textAlign: "right" }}>
-            <h2>📋 טופס דיווח רפואי</h2>
+        <div className="container" style={{ direction: "rtl", textAlign: "right", maxWidth: "500px", margin: "auto" }}>
+            <h2 style={{ textAlign: "center" }}>📋 טופס דיווח רפואי</h2>
             <label>🏢 מכלאה (אות ומספר):</label>
-            <input type="text" name="blockNumber" onChange={handleChange} />
+            <input type="text" name="blockNumber" onChange={handleChange} style={{ textAlign: "right" }} />
 
             <label>🔢 מספר אסיר:</label>
-            <input type="text" name="prisonerNumber" onChange={handleChange} />
+            <input type="text" name="prisonerNumber" onChange={handleChange} style={{ textAlign: "right" }} />
 
             <label>🧠 האם בהכרה?</label>
-            <select name="consciousness" onChange={handleChange}>
+            <select name="consciousness" onChange={handleChange} style={{ textAlign: "right" }}>
                 <option value="">בחר</option>
                 <option value="כן">כן</option>
                 <option value="לא">לא</option>
@@ -52,17 +52,17 @@ const MedicalReportForm = () => {
             </select>
 
             <label>🗣️ האם ניסית לדבר עם האסיר?</label>
-            <select name="spokenToPrisoner" onChange={handleChange}>
+            <select name="spokenToPrisoner" onChange={handleChange} style={{ textAlign: "right" }}>
                 <option value="">בחר</option>
                 <option value="כן">כן</option>
                 <option value="לא">לא</option>
             </select>
 
             <label>📝 תלונה:</label>
-            <textarea name="complaint" onChange={handleChange}></textarea>
+            <textarea name="complaint" onChange={handleChange} style={{ textAlign: "right" }}></textarea>
 
             <label>💥 ממה נגרם?</label>
-            <select name="cause" onChange={handleChange}>
+            <select name="cause" onChange={handleChange} style={{ textAlign: "right" }}>
                 <option value="">בחר</option>
                 <option value="חבלה">חבלה</option>
                 <option value="חיפושים">חיפושים</option>
