@@ -12,8 +12,24 @@ const MedicalReportForm = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const isFormValid = () => {
+        return (
+            formData.blockNumber.trim() !== "" &&
+            formData.prisonerNumber.trim() !== "" &&
+            formData.consciousness !== "" &&
+            formData.spokenToPrisoner !== "" &&
+            formData.complaint.trim() !== "" &&
+            formData.cause !== ""
+        );
+    };
+
     const sendToWhatsApp = () => {
-        const message = `🚨 *הקפצת חובשים!* 🚨%0A🏢 *מכלאה:* ${formData.blockNumber}.%0A🔢 *מספר אסיר:* ${formData.prisonerNumber}.%0A🧠 *האם בהכרה:* ${formData.consciousness}.%0A🗣️ *האם דיברת עם האסיר:* ${formData.spokenToPrisoner}.%0A📝 *תלונה:* ${formData.complaint}.%0A💥 *ממה נגרם:* ${formData.cause}.%0A✅ *אנא אשרו קבלה!* ✅`;
+        if (!isFormValid()) {
+            alert("יש למלא את כל השדות לפני שליחה!");
+            return;
+        }
+
+        const message = `🚨 *הקפצת חובשים!* 🚨%0A🏢 *מכלאה (אות ומספר):* ${formData.blockNumber}.%0A🔢 *מספר אסיר:* ${formData.prisonerNumber}.%0A🧠 *האם בהכרה:* ${formData.consciousness}.%0A🗣️ *האם דיברת עם האסיר:* ${formData.spokenToPrisoner}.%0A📝 *תלונה:* ${formData.complaint}.%0A💥 *ממה נגרם:* ${formData.cause}.%0A✅ *אנא אשרו קבלה!* ✅`;
         const whatsappURL = `https://api.whatsapp.com/send?text=${message}`;
         window.open(whatsappURL, "_blank");
     };
@@ -21,7 +37,7 @@ const MedicalReportForm = () => {
     return (
         <div className="container" style={{ direction: "rtl", textAlign: "right" }}>
             <h2>📋 טופס דיווח רפואי</h2>
-            <label>🏢 מכלאה:</label>
+            <label>🏢 מכלאה (אות ומספר):</label>
             <input type="text" name="blockNumber" onChange={handleChange} />
 
             <label>🔢 מספר אסיר:</label>
